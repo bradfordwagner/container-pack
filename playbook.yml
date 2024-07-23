@@ -16,7 +16,7 @@
         archive_key: pack
         checksum_key: pack
         separator: '-'
-        tag: v0.34.2
+        tag: v0.35.0
   roles:
     - role: bradfordwagner.go-releaser-install
   tasks:
