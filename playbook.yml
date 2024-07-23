@@ -1,11 +1,17 @@
 ---
 - hosts: localhost
   vars:
-    jq_ver: 1.7.1
+    gri_installs:
+      - repo: buildpacks/pack
+        archive_extension: tgz
+        archive_key: pack
+        checksum_key: pack
+        separator: '-'
+        tag: v0.34.2
   roles:
-    - role: andrewrothstein.jq
+    - role: bradfordwagner.go-releaser-install
   tasks:
     - name: smoketest installed binaries are added to path
       command: "{{ item }}"
       loop:
-        - jq -h
+       - pack -h
