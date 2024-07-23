@@ -1,6 +1,15 @@
 ---
 - hosts: localhost
   vars:
+    gri_archive_formats:
+      pack: |
+        {{- app_repo }}{{ app_separator }}{{ app.tag }}{{ app_separator }}{{ gri_os -}}
+        {% if 'amd64' != gri_arch %}
+        {{ app_separator }}{{ gri_arch -}}
+        {% endif %}
+        .{{ app_archive_extension -}}
+    gri_checksum_formats:
+      pack: '{{ app_archive_format }}.sha256'
     gri_installs:
       - repo: buildpacks/pack
         archive_extension: tgz
